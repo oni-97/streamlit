@@ -21,9 +21,9 @@ st.code(code, language="python")
 
 
 df = pd.DataFrame({"col1": [1, 2, 3, 4], "col2": [-1, -2, -3, -4]})
-st.dataframe(df.style.highlight_max(axis=0))
+st.sidebar.dataframe(df.style.highlight_max(axis=0))
 
-st.json(
+st.sidebar.json(
     {
         "fruir": "apple",
         "sports": [
@@ -34,10 +34,12 @@ st.json(
     }
 )
 
+col1, col2 = st.columns(2)
 chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["a", "b", "c"])
-st.line_chart(chart_data)
-st.area_chart(chart_data)
-st.bar_chart(chart_data)
+col1.subheader("line chart")
+col1.line_chart(chart_data)
+col2.subheader("area chart")
+col2.area_chart(chart_data)
 
 if st.button("Click me"):
     st.write("Thanks to click")
